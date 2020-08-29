@@ -3,7 +3,7 @@ import os
 import csv
 
 # Specify the file to write to
-#output_path = os.path.join(  "Resources", "budget_data.csv")
+output_path = os.path.join(  "budget_data.csv")
 total_months = 0
 net_profit_loss = 0.0
 curr_month_pl = 0.0
@@ -30,10 +30,11 @@ with open("budget_data.csv") as financial_data:
 
       
 #Find total number of months in budget data file
+#Find the average of the changes in the pfrt/losses
+#Find the greatest increase in profits (date and amount) over entire period
+#Find the greatest decrease in losses (date and amount) over the entire period
    
     for row in csvreader:
-        #print ('month:',row[0])
-        #print ('profit:', int(row[1]))
         total_months=total_months+1
         curr_month_pl = int(row[1])
         if (total_months >1):
@@ -66,8 +67,22 @@ with open("budget_data.csv") as financial_data:
     print(g_loss_date)
 
 
-#Find the average of the changes in the pfrt/losses
 
-#Find the greatest increase in profits (date and amount) over entire period
+# writing to csv file  
+financial_output = "my_financial_output.txt"
 
-#Find the greatest decrease in losses (date and amount) over the entire period
+with open(financial_output, 'w') as csvfile:  
+
+    # creating a csv writer object  
+    csvwriter = csv.writer(csvfile)  
+        
+    # writing the fields  
+    writer = csv.writer(my_financial_output) 
+        
+    # writing the data rows  
+    writer.writerows(myData)
+
+
+
+
+
